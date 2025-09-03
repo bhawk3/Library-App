@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>PageTitle</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+
+		<!-- Convert this to an external style sheet -->
+		<link href="/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<!-- ======= Hero Section ======= -->
+		<main id="hero">
+			<div class="container col-xxl-8 px-4 py-5">
+				<div class="row flex-lg-row align-items-center g-5 py-5">
+					<div class="col-10 col-sm-8 col-lg-6">
+						<label>Book Name</label><br />
+						<input type="text" id="book-name" /><br />
+						<label>Author Name</label><br />
+						<input type="text" id="author-name" /><br />
+						<label>Publish Year</label><br />
+						<input type="text" id="publish-year" /><br />
+						<label>Have You Read It?</label><br />
+						<label for="yesIHaveRead">Yes</label>
+						<input type="radio" id="yesIHaveRead" name="read-it-or-naw" value="Yes" /><br />
+						<label for="noIHaveNotRead">Nope</label>
+						<input type="radio" id="noIHaveNotRead" name="read-it-or-naw" value="Nope" /><br />
+						<button type="submit" class="btn btn-outline-primary btn-lg px-4">Submit</button>
+					</div>
+					<div class="col-lg-6">
+						<h1 class="display-5 fw-bold lh-1 mb-3">Find a new book? Add it to the list!</h1>
+						<p id="book-information"></p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<!-- Bootstrap JS -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+		<script src="/script.js"></script>
+	</body>
+</html>
