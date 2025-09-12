@@ -36,11 +36,22 @@ class book {
 	constructor() {
 		this.bookData = [];
 	}
-}
 
+	addBook(name, author, year, read) {
+		//this.name = name;
+		//this.author = author;
+		//this.year = year;
+		//this.read = read;
+		this.bookData.push({ name, author, year, read });
+	}
+}
+const newBook = new book();
 //submit btn functionality
 submitBtn.addEventListener("click", () => {
 	console.log("Hiiiiiiiii");
+
+	newBook.addBook("test", "testing", "2020", "no");
+	console.log(bookData);
 
 	//push form input into the array when btn clicked
 });
