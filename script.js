@@ -7,16 +7,16 @@ const submitBtn = document.getElementById("submit-btn");
 const bookInformation = document.getElementById("book-information");
 
 const books = [
-	{ name: "To Kill a Mockingbird", author: "Harper Lee", year: 1960, read: "No" },
-	{ name: "1984", author: "George Orwell", year: 1949, read: "No" },
-	{ name: "The Great Gatsby", author: "F. Scott Fitzgerald", year: 1925, read: "No" },
-	{ name: "Moby Dick", author: "Herman Melville", year: 1851, read: "No" },
-	{ name: "Pride and Prejudice", author: "Jane Austen", year: 1813, read: "No" },
-	{ name: "The Catcher in the Rye", author: "J.D. Salinger", year: 1951, read: "No" },
-	{ name: "Brave New World", author: "Aldous Huxley", year: 1932, read: "No" },
-	{ name: "The Hobbit", author: "J.R.R. Tolkien", year: 1937, read: "No" },
-	{ name: "Fahrenheit 451", author: "Ray Bradbury", year: 1953, read: "No" },
-	{ name: "Crime and Punishment", author: "Fyodor Dostoevsky", year: 1866, read: "No" },
+	{ id: 1, name: "To Kill a Mockingbird", author: "Harper Lee", year: 1960, read: "No" },
+	{ id: 2, name: "1984", author: "George Orwell", year: 1949, read: "No" },
+	{ id: 3, name: "The Great Gatsby", author: "F. Scott Fitzgerald", year: 1925, read: "No" },
+	{ id: 4, name: "Moby Dick", author: "Herman Melville", year: 1851, read: "No" },
+	{ id: 5, name: "Pride and Prejudice", author: "Jane Austen", year: 1813, read: "No" },
+	{ id: 6, name: "The Catcher in the Rye", author: "J.D. Salinger", year: 1951, read: "No" },
+	{ id: 7, name: "Brave New World", author: "Aldous Huxley", year: 1932, read: "No" },
+	{ id: 8, name: "The Hobbit", author: "J.R.R. Tolkien", year: 1937, read: "No" },
+	{ id: 9, name: "Fahrenheit 451", author: "Ray Bradbury", year: 1953, read: "No" },
+	{ id: 10, name: "Crime and Punishment", author: "Fyodor Dostoevsky", year: 1866, read: "No" },
 ];
 
 books.forEach(({ name, author, year, read }) => {
@@ -27,8 +27,8 @@ books.forEach(({ name, author, year, read }) => {
         <li id="${year}" >${year}</li>
         <li id="${read}" >${read}</li>
     </ul>
-    <button id="edit-btn">Edit</button>
-    <button id="delete-btn">Delete</button>
+    <button id="${id}" class="edit-btn">Edit</button>
+    <button id="${id}" class="delete-btn">Delete</button>
     `;
 });
 
@@ -37,12 +37,21 @@ class book {
 		this.bookData = [];
 	}
 
-	addBook(name, author, year, read) {
+	addBook(id, bookInformation) {
 		//this.name = name;
 		//this.author = author;
 		//this.year = year;
 		//this.read = read;
-		this.bookData.push({ name, author, year, read });
+
+		const bookInfo = bookInformation.find((bookss) => {
+			bookss.id === id;
+		});
+
+		const { name, author, year, read } = bookInfo;
+		this.bookData.push(bookInfo);
+
+		//Still need to display this data using template literal
+		return this.bookData;
 	}
 }
 const newBook = new book();
@@ -51,7 +60,7 @@ submitBtn.addEventListener("click", () => {
 	console.log("Hiiiiiiiii");
 
 	newBook.addBook("test", "testing", "2020", "no");
-	console.log(bookData);
+	console.log(newBook.bookData);
 
 	//push form input into the array when btn clicked
 });
