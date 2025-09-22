@@ -5,6 +5,7 @@ const yesIHaveRead = document.getElementById("yesIHaveRead");
 const noIHaveNotRead = document.getElementById("noIHaveNotRead");
 const submitBtn = document.getElementById("submit-btn");
 const bookInformation = document.getElementById("book-information");
+const newBookForm = document.getElementById("new-book-form");
 
 const books = [
 	{ id: 1, name: "To Kill a Mockingbird", author: "Harper Lee", year: 1960, read: "No" },
@@ -49,15 +50,15 @@ class book {
 		books.push(newBook);
 
 		//Still need to display this data using template literal
-
 		return books;
 	}
 }
 
 const newBook = new book();
 //submit btn functionality
-submitBtn.addEventListener("click", () => {
-	let readChecked = yesIHaveRead ? "Yes" : "No";
+newBookForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	let readChecked = yesIHaveRead.checked ? "Yes" : "No";
 	//********************These parameters are wrong in this.**********************
 	newBook.addBook(bookName.value, authorName.value, publishYear.value, readChecked);
 	console.log(books);
@@ -65,6 +66,6 @@ submitBtn.addEventListener("click", () => {
 	//push form input into the array when btn clicked
 });
 
-//edit btn functionality (this may go in the class but im not sure fully)
+//edit btn functionality
 
 //delete btn functionality

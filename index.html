@@ -20,18 +20,20 @@
 				<div class="row flex-lg-row align-items-center g-5 py-5">
 					<h1 class="display-5 fw-bold lh-1 mb-3">Find a new book? Add it to the list!</h1>
 					<div class="col-10 col-sm-8 col-lg-6">
-						<label>Book Name</label><br />
-						<input type="text" id="book-name" /><br />
-						<label>Author Name</label><br />
-						<input type="text" id="author-name" /><br />
-						<label>Publish Year</label><br />
-						<input type="text" id="publish-year" /><br />
-						<label>Have You Read It?</label><br />
-						<label for="yesIHaveRead">Yes</label>
-						<input type="radio" id="yesIHaveRead" name="read-it-or-naw" value="Yes" /><br />
-						<label for="noIHaveNotRead">Nope</label>
-						<input type="radio" id="noIHaveNotRead" name="read-it-or-naw" value="Nope" /><br />
-						<button type="submit" id="submit-btn" class="btn btn-outline-primary btn-lg px-4">Submit</button>
+						<form id="new-book-form">
+							<label>Book Name</label><br />
+							<input type="text" id="book-name" /><br />
+							<label>Author Name</label><br />
+							<input type="text" id="author-name" /><br />
+							<label>Publish Year</label><br />
+							<input type="text" id="publish-year" /><br />
+							<label>Have You Read It?</label><br />
+							<label for="yesIHaveRead">Yes</label>
+							<input type="radio" id="yesIHaveRead" name="read-it-or-naw" value="Yes" required /><br />
+							<label for="noIHaveNotRead">Nope</label>
+							<input type="radio" id="noIHaveNotRead" name="read-it-or-naw" value="Nope" /><br />
+							<button type="submit" id="submit-btn" class="btn btn-outline-primary btn-lg px-4">Submit</button>
+						</form>
 					</div>
 					<div class="col-lg-6">
 						<p id="book-information"></p>
