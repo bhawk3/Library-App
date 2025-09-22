@@ -19,8 +19,9 @@ const books = [
 	{ id: 10, name: "Crime and Punishment", author: "Fyodor Dostoevsky", year: 1866, read: "No" },
 ];
 
-books.forEach(({ name, author, year, read }) => {
-	bookInformation.innerHTML += `
+function renderBooks() {
+	books.forEach(({ id, name, author, year, read }) => {
+		bookInformation.innerHTML += `
     <ul>
         <li id="${name}" >${name}</li>
         <li id="${author}" >${author}</li>
@@ -30,38 +31,37 @@ books.forEach(({ name, author, year, read }) => {
     <button id="${id}" class="edit-btn">Edit</button>
     <button id="${id}" class="delete-btn">Delete</button>
     `;
-});
+	});
+}
+renderBooks();
 
 class book {
-	constructor() {
-		this.bookData = [];
-	}
-
-	addBook(id, bookInformation) {
+	addBook(bookName, author, year, read) {
 		//this.name = name;
 		//this.author = author;
 		//this.year = year;
 		//this.read = read;
 
-		const bookInfo = bookInformation.find((bookss) => {
-			bookss.id === id;
-		});
+		//const bookInfo = bookInformation.find((bookss) => bookss.id === id);
+		let bookId = books.length + 1;
 
-		const { name, author, year, read } = bookInfo;
-		this.bookData.push(bookInfo);
+		let newBook = { id: bookId, name: bookName, author, year, read };
+		books.push(newBook);
 
 		//Still need to display this data using template literal
-		return this.bookData;
+
+		return books;
 	}
 }
+
 const newBook = new book();
 //submit btn functionality
 submitBtn.addEventListener("click", () => {
-	console.log("Hiiiiiiiii");
-
-	newBook.addBook("test", "testing", "2020", "no");
-	console.log(newBook.bookData);
-
+	let readChecked = yesIHaveRead ? "Yes" : "No";
+	//********************These parameters are wrong in this.**********************
+	newBook.addBook(bookName.value, authorName.value, publishYear.value, readChecked);
+	console.log(books);
+	renderBooks();
 	//push form input into the array when btn clicked
 });
 
