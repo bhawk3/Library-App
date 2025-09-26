@@ -52,6 +52,10 @@ class book {
 		//Still need to display this data using template literal
 		return books;
 	}
+
+	removeBook() {
+		newBook.innerHTML = "";
+	}
 }
 
 const newBook = new book();
@@ -69,3 +73,8 @@ newBookForm.addEventListener("submit", (e) => {
 //edit btn functionality
 
 //delete btn functionality
+const deleteBtn = document.getElementsByClassName("delete-btn");
+
+deleteBtn.addEventListener("click", () => {
+	removeBook();
+});
