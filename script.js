@@ -20,7 +20,7 @@ const books = [
 	{ id: 10, name: "Crime and Punishment", author: "Fyodor Dostoevsky", year: 1866, read: "No" },
 ];
 
-function renderBooks() {
+function renderBook() {
 	books.forEach(({ id, name, author, year, read }) => {
 		bookInformation.innerHTML += `
     <ul id="${id}">
@@ -28,28 +28,26 @@ function renderBooks() {
         <li id="${author}" >${author}</li>
         <li id="${year}" >${year}</li>
         <li id="${read}" >${read}</li>
+		<button class="edit-btn">Edit</button>
+    	<button class="delete-btn" onClick="deleteBtn(this)">Delete</button>
     </ul>
-    <button class="edit-btn">Edit</button>
-    <button class="delete-btn" onClick="deleteBtn(this)">Delete</button>
+
     `;
 	});
+}
+
+function renderBooks() {
+	bookInformation.innerHTML = "";
+	books.forEach(renderBook);
 }
 renderBooks();
 
 class book {
 	addBook(bookName, author, year, read) {
-		//this.name = name;
-		//this.author = author;
-		//this.year = year;
-		//this.read = read;
-
-		//const bookInfo = bookInformation.find((bookss) => bookss.id === id);
 		let bookId = books.length + 1;
 
 		let newBook = { id: bookId, name: bookName, author, year, read };
 		books.push(newBook);
-
-		//Still need to display this data using template literal
 		return books;
 	}
 
@@ -63,28 +61,29 @@ const newBook = new book();
 newBookForm.addEventListener("submit", (e) => {
 	e.preventDefault();
 	let readChecked = yesIHaveRead.checked ? "Yes" : "No";
-	//********************These parameters are wrong in this.**********************
 	newBook.addBook(bookName.value, authorName.value, publishYear.value, readChecked);
+	const lastBook = books[books.length - 1];
+	renderBook(lastBook);
 	console.log(books);
-	renderBooks();
 	//push form input into the array when btn clicked
 });
 
 //edit btn functionality
 
 //delete btn functionality
-//const deleteBtn = document.getElementsByClassName("delete-btn");
-
-/*deleteBtn.addEventListener("click", () => {
-
-	removeBook();
-});
-*/
-
 const deleteBtn = (buttonEl) => {
 	//This is finding the element the is being clicked
-	const bookDataArr = books.findIndex((item) => item.id === buttonEl.parentElement.id);
+	const bookDataArr = books.findIndex((item) => item.id === Number(buttonEl.parentElement.id));
+	console.log(bookDataArr);
+	console.log("Dom id:", buttonEl.parentElement.id);
+	console.log(
+		"item id:",
+		books.map((b) => b.id)
+	);
+
+	if (bookDataArr !== -1) {
+		buttonEl.parentElement.remove();
+		books.splice(bookDataArr, 1);
+	}
 	//look up online what .remove() and splice so I can learn more ab that. This functionality caused all html data to remove from screen
-	buttonEl.parentElement.remove();
-	books.splice(bookDataArr, 1);
 };
