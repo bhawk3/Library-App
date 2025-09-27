@@ -23,14 +23,14 @@ const books = [
 function renderBooks() {
 	books.forEach(({ id, name, author, year, read }) => {
 		bookInformation.innerHTML += `
-    <ul>
+    <ul id="${id}">
         <li id="${name}" >${name}</li>
         <li id="${author}" >${author}</li>
         <li id="${year}" >${year}</li>
         <li id="${read}" >${read}</li>
     </ul>
-    <button id="${id}" class="edit-btn">Edit</button>
-    <button id="${id}" class="delete-btn">Delete</button>
+    <button class="edit-btn">Edit</button>
+    <button class="delete-btn" onClick="deleteBtn(this)">Delete</button>
     `;
 	});
 }
@@ -73,8 +73,18 @@ newBookForm.addEventListener("submit", (e) => {
 //edit btn functionality
 
 //delete btn functionality
-const deleteBtn = document.getElementsByClassName("delete-btn");
+//const deleteBtn = document.getElementsByClassName("delete-btn");
 
-deleteBtn.addEventListener("click", () => {
+/*deleteBtn.addEventListener("click", () => {
+
 	removeBook();
 });
+*/
+
+const deleteBtn = (buttonEl) => {
+	//This is finding the element the is being clicked
+	const bookDataArr = books.findIndex((item) => item.id === buttonEl.parentElement.id);
+	//look up online what .remove() and splice so I can learn more ab that. This functionality caused all html data to remove from screen
+	buttonEl.parentElement.remove();
+	books.splice(bookDataArr, 1);
+};
