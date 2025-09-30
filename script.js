@@ -31,14 +31,14 @@ function renderBook() {
 		<button class="edit-btn">Edit</button>
     	<button class="delete-btn" onClick="deleteBtn(this)">Delete</button>
     </ul>
-
     `;
 	});
 }
 
 function renderBooks() {
 	bookInformation.innerHTML = "";
-	books.forEach(renderBook);
+	renderBook();
+	//books.forEach(renderBook);
 }
 renderBooks();
 
@@ -63,7 +63,7 @@ newBookForm.addEventListener("submit", (e) => {
 	let readChecked = yesIHaveRead.checked ? "Yes" : "No";
 	newBook.addBook(bookName.value, authorName.value, publishYear.value, readChecked);
 	const lastBook = books[books.length - 1];
-	renderBook(lastBook);
+	renderBooks(lastBook);
 	console.log(books);
 	//push form input into the array when btn clicked
 });
