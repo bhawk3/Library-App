@@ -28,7 +28,6 @@ function renderBook() {
         <li id="${author}" >${author}</li>
         <li id="${year}" >${year}</li>
         <li id="${read}" >${read}</li>
-		<button class="edit-btn">Edit</button>
     	<button class="delete-btn" onClick="deleteBtn(this)">Delete</button>
     </ul>
     `;
@@ -67,8 +66,6 @@ newBookForm.addEventListener("submit", (e) => {
 	console.log(books);
 	//push form input into the array when btn clicked
 });
-
-//edit btn functionality
 
 //delete btn functionality
 const deleteBtn = (buttonEl) => {
